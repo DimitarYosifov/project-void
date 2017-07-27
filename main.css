@@ -1,0 +1,535 @@
+
+.resourses {
+    font-size: 24px;
+    font-family: 'Exo 2', sans-serif;
+    text-shadow: 1px 1px gold;
+    position: absolute;
+    top: 10px;
+    width: 200px;
+    height: 25px;
+    display: none;
+    text-align: center;
+    vertical-align: middle;
+    cursor: default;
+}
+
+.homeClass:hover, .newGameClass:hover {
+    color: white;
+    background-color: black;
+}
+
+.homeClass {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: bolder;
+    position: relative;
+    font-size: 18px;
+    width: 130px;
+    min-height: 40px;
+    left: 11px;
+    top: 48px;
+    margin: 3px;
+    border: 1px solid black;
+    border-radius: 30px;
+    background: linear-gradient(#c0c0c0, #3D2C23);
+}
+
+.newGameClass {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: bolder;
+    position: relative;
+    font-size: 18px;
+    width: 130px;
+    min-height: 40px;
+    left: 11px;
+    top: 70px;
+    margin: 3px;
+    border: 1px solid black;
+    border-radius: 30px;
+    background: linear-gradient(#c0c0c0, #3D2C23);
+}
+
+.play {
+    width: 120px;
+    height: 40px;
+}
+
+.divResourses {
+    position: relative;
+    white-space: nowrap;
+}
+
+#mainTable {
+    position: absolute;
+    left: 200px;
+    top: 136px;
+    background-color: black;
+    border-color: gold;
+    border-radius: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: inherit;
+    margin-bottom: auto;
+}
+
+img {
+    vertical-align: middle;
+}
+
+td > img {
+    border-radius: 25px;
+}
+
+.void {
+    margin: 2px;
+    border: 1px solid gold;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    animation: voidRotate .1s infinite;
+}
+
+@keyframes voidRotate {
+    0% {
+        transform: rotate(360deg);
+    }
+}
+
+.blocks {
+    margin: 2px;
+    border: 1px solid rgba(255, 215, 0, .5);
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+.blocks:hover {
+    box-shadow: 0 0 7px 7px gold;
+}
+
+.blocks:hover, button:hover, #backButton, #backButton2, #backButton3, .chests > img, #toggle-sound, #sound-off {
+    cursor: pointer;
+}
+
+#backButton:hover, #backButton2:hover, #backButton3:hover {
+    box-shadow: 0 0 50px yellow;
+}
+
+#logo:hover, .plus {
+    cursor: default;
+}
+
+#day, #diveEndOfDay {
+    font-family: 'Exo 2', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    font-size: 50px;
+    top: 330px;
+    color: gray;
+    width: 300px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.levelInfoClass {
+    transform: translate(-50%, 0);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 10px;
+    float: left;
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    left: 155px;
+    top: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#levelInfo {
+    font-size: 18px;
+    color: #1A9F9B;
+    text-shadow: 2px 2px black;
+}
+
+#newGameHolder, #homeSectionHolder {
+    background-color: black;
+    background: linear-gradient(orangered, black);
+}
+
+#levelInfo, #day, #divReady, #diveEndOfDay, .classChecker, .classGoal, #specialsDiv, .chance, .upgradeRequirementsClass, #resourseMinusDiv, #voidPointsDiv {
+    cursor: default;
+}
+
+#specialsDiv {
+    font-family: 'Exo 2', sans-serif;
+}
+
+#comboGold, #comboBlack {
+    position: absolute;
+    top: 136px;
+    left: 755px;
+    width: 15px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border: 1px solid #EDF668;
+    border-radius: 25px;
+}
+
+#comboGold {
+    box-shadow: 0px 0px 70px 15px black, 0px 0px 275px 40px #1A9F9B;
+}
+
+#goals {
+    font-size: 100px;
+    font-family: 'Exo 2', sans-serif;
+    position: relative;
+    margin-bottom: 0px;
+}
+
+.classGoal {
+    font-family: 'Exo 2', sans-serif;
+    display: block;
+    position: absolute;
+    width: 240px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: #1A9F9B;
+}
+
+li {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.classChecker {
+    font-size: 30px;
+    position: relative;
+    background-color: black;
+    color: red;
+    border-radius: 100%;
+    border: 1px solid gold;
+    bottom: 7px;
+}
+
+#resourseMinusDiv {
+    position: relative;
+    top: -100px;
+    left: 250px;
+    width: 600px;
+    height: 100px;
+    font-family: 'Exo 2', sans-serif;
+    text-align: center;
+    font-size: 100px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: gray;
+}
+
+.chance {
+    font-family: 'Exo 2', sans-serif;
+    width: 200px;
+    position: relative;
+    text-align: center;
+    font-size: 30px;
+    color: #EDF668;
+    padding-right: 40px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+td > .plus {
+    min-width: 80px;
+}
+
+.plus {
+    padding: 5px;
+    margin-bottom: 0px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    box-shadow: inset 0px 0px 15px 10px black;
+    font-size: 40px;
+    color: black;
+    border: 1px solid #EDF668;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #EDF668;
+    opacity: 0.2;
+}
+
+.plusShop {
+    padding: 5px;
+    margin-bottom: 0px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    box-shadow: inset 0px 0px 15px 10px black;
+    font-size: 40px;
+    color: black;
+    border: 1px solid #EDF668;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #EDF668;
+    opacity: 0.2;
+}
+
+.upgradeRequirementsClass {
+    font-family: 'Exo 2', sans-serif;
+    position: relative;
+    left: 100px;
+    font-size: 25px;
+    color: gold;
+    margin-bottom: 0px;
+    width: 350px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#reward1 {
+    position: relative;
+    left: 30px;
+    top: -100px;
+    width: 40px;
+    height: 40px;
+}
+
+#reward2 {
+    position: relative;
+    left: 164px;
+    top: -140px;
+    width: 40px;
+    height: 40px;
+}
+
+#reward3 {
+    position: relative;
+    left: 298px;
+    top: -180px;
+    width: 40px;
+    height: 40px;
+}
+
+.rewards > img {
+
+    border-radius: 100px;
+    border: 2px solid gold;
+    width: 30px;
+    height: 30px;
+}
+
+#wrapper {
+    width: 1150px;
+    height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: auto;
+    border: 20px double black;
+    border-radius: 20px;
+}
+
+#res {
+    position: absolute;
+    margin-left: 30px;
+}
+
+#chestsDiv {
+    position: relative;
+    top: 450px;
+    left: 150px;
+    width: 500px;
+}
+
+.chests {
+    margin-right: 30px;
+}
+
+#voidPointsDiv {
+    font-size: 70px;
+    width: 40%;
+    position: relative;
+    top: 670px;
+    left: 680px;
+    font-family: 'Exo 2', sans-serif;
+    color: red;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+li {
+    width: 280px;
+    margin-bottom: 30px;
+    color: #1A9F9B;
+}
+
+table > tr > td > span {
+    background: transparent;
+}
+
+#upgradeTable {
+    top: 70px;
+    position: relative;
+    left: 135px;
+}
+
+#shopTable {
+    top: 70px;
+    position: relative;
+    left: 250px;
+}
+
+#shopTable tr {
+    margin-bottom: 20px;
+}
+
+#shopTable tr td {
+    width: 220px;
+    height: 60px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    color: #EDF668;
+    margin-bottom: 20px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    cursor: default;
+}
+
+#shopTable tr td {
+    align-items: center;
+    vertical-align: middle;
+}
+
+#shopTable tr td:nth-child(1) {
+    text-align: left;
+}
+
+#shopTable tr td:nth-child(2) {
+    text-align: right;
+}
+
+#shopTable tr td:nth-child(3) {
+    text-align: left;
+}
+
+#upgradeTable tr > td {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.pic img {
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+#failDiv {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 230px;
+    position: relative;
+    top: 100px;
+    left: 150px;
+    color: red;
+    text-shadow: -9px 0 black, 0 11px black, 2px 0 black, 0 -1px black;
+    cursor: default;
+}
+
+#deathSection > div > button, #congratsSection button {
+    position: relative;
+    top: 100px;
+    display: inline-block;
+    font-family: 'Exo 2', sans-serif;
+    width: 350px;
+    border-radius: 30px;
+    font-size: 60px;
+    border: 2px solid gray;
+    background-color: black;
+    color: white;
+}
+
+#deathSection > div > button:hover, #congratsSection button:hover {
+    color: gray;
+    border: 2px solid gold;
+}
+
+body {
+    background: url("images/body-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#logo {
+    z-index: 0;
+    border: 4px solid red;
+    border-radius: 10px;
+    animation: jump 1.5s;
+}
+
+@keyframes jump {
+    0% {
+        top: 0px;
+        left: 50%;
+        width: 0px;
+        height: 0px;
+    }
+    100% {
+        top: 520px;
+    }
+}
+
+#congratsSection {
+    overflow: hidden;
+}
+
+#congratsSection > h1 {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 100px;
+    position: relative;
+    color: red;
+    text-shadow: -9px 0 black, 0 11px black, 2px 0 black, 0 -1px black;
+    cursor: default;
+    left: 0px;
+    height: 150px;
+    margin: 0 auto;
+    text-align: center;
+    transition: margin-left 3s;
+    animation: fly 2s 1;
+}
+
+@keyframes fly {
+    0% {
+        position: relative;
+        left: -4000px;
+    }
+    75% {
+        left: 500px;
+        position: relative;
+    }
+    100% {
+        left: 0px;
+        position: relative;
+    }
+}
+
+#congratsSection > p {
+    display: none;
+    color: gold;
+    margin-top: 200px;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 70px;
+    text-align: center;
+}
+
+#toggle-sound, #sound-off {
+    border: 3px double #9C8478;
+    padding: 2px;
+}
+
+#instructionsSection {
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 30px;
+}
+
+#thankyouu:hover {
+    cursor: default;
+}

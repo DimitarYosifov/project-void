@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Void</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper">
+    <div id="res">
+        <span id="wood" class="resourses" style="top: 10px;left: -30px;">Wood:0</span>
+        <span id="stone" class="resourses" style="top: 10px;left: 100px;">Stone:0</span>
+        <span id="metal" class="resourses" style="top: 10px;left: 230px;">Metal:0</span>
+        <span id="food" class="resourses" style="top: 10px;left: 360px;">Food:0</span>
+        <span id="water" class="resourses" style="top: 10px;left: 490px;">Water:0</span>
+        <span id="silver" class="resourses" style="top: 10px;left: 620px;">Silver:0</span>
+        <span id="gold" class="resourses" style="top: 10px;left: 750px;">Gold:0</span>
+        <span id="diamonds" class="resourses" style="top: 10px;left: 900px;">Diamonds:0</span>
+    </div>
+
+    <div id="soundContainer" style="position: relative" onclick="soundFunction(),clickFunction()">
+        <img id="toggle-sound" src="images/sound.png" height="22" width="22;"
+             style="position:absolute; left: 1090px;top: 51px; ;border-radius: 15px;z-index: 22"/>
+    </div>
+
+    <section id="congratsSection" style="display: none;">
+        <h1>CONGRATULATIONS</h1>
+        <p id="thankyou">Thank You For Playing</p>
+        <div style="text-align: center;display: block">
+            <button id="btnTryAgainTwo" onclick="tryAgain(),clickFunction()">Play Again</button>
+            <button id="btnExit2" onclick="exitFunction(),clickFunction()">Exit</button>
+        </div>
+    </section>
+
+    <section id="instructionsSection" style="display: none;position:relative;">
+        <h1 style="color: gold;margin-top: 0">Instructions</h1>
+        <p>Swap blocks to match 3 or more elements of the same type horizontally or vertically.</p>
+        <p style="float: left;">When 3 elements match you gain 3 resources. </p>
+        <div id="instructionsTable" style="display: flex;flex-wrap: wrap;width: 90px; float: left; margin-left: 200px;margin-right: 250px">
+            <img src="images/wood.jpg" height="30" width="30"/>
+            <img src="images/water.jpg" height="30" width="30"/>
+            <img src="images/metal.jpg" height="30" width="30"/>
+            <img src="images/gold.jpg" height="30" width="30"/>
+            <img src="images/gold.jpg" height="30" width="30"/>
+            <img src="images/gold.jpg" height="30" width="30"/>
+            <img src="images/food.jpg" height="30" width="30"/>
+            <img src="images/stone.jpg" height="30" width="30"/>
+            <img src="images/water.jpg" height="30" width="30"/>
+        </div>
+        <p style="clear: both;float: left;">When 4 elements match you gain 4 resourses
+        <div id="instructionsTable2" style="display: flex;flex-wrap: wrap;width: 120px; float: left;
+    margin-left: 20px;margin-right: 20px">
+            <img src="images/wood.jpg" height="30" width="30"/>
+            <img src="images/water.jpg" height="30" width="30"/>
+            <img src="images/silver.jpg" height="30" width="30"/>
+            <img src="images/gold.jpg" height="30" width="30"/>
+            <img src="images/food.jpg" height="30" width="30"/>
+            <img src="images/gold.jpg" height="30" width="30"/>
+            <img src="images/silver.jpg" height="30" width="30"/>
+            <img src="images/stone.jpg" height="30" width="30"/>
+            <img src="images/water.jpg" height="30" width="30"/>
+            <img src="images/metal.jpg" height="30" width="30"/>
+            <img src="images/silver.jpg" height="30" width="30"/>
+            <img src="images/metal.jpg" height="30" width="30"/>
+            <img src="images/diamond.jpg" height="30" width="30"/>
+            <img src="images/food.jpg" height="30" width="30"/>
+            <img src="images/silver.jpg" height="30" width="30"/>
+            <img src="images/water.jpg" height="30" width="30"/>
+        </div>
+        <span style="height: 200px; line-height: 100px;float: left">plus some combo points.</span>
+        <div id="black"
+             style="width: 15px;height:150px;border:1px solid gold;border-radius: 10px;float: left;margin-left: 25px;background: gold">
+        </div>
+        <div id="goldd" style="width: 14px;height:130px;border:1px solid gold;border-radius: 10px;float: left;margin-left: 25px;background: black;position: absolute;
+    left: 1034px; top: 286px;"
+        ></div>
+        </p>
+        <p style="clear: both;">When 5 or more elements match you even get an extra move.</p>
+        <p style="float: left;">When combobar is full you can you use one of the specials.</p>
+        <img style="vertical-align: bottom ;float: left;" src="images/+3.png" height="50" width="50"/>
+        <p style="float: left;">Gives you 3 more moves,</p>
+        <img style="float: left;" src="images/explosion.jpg" height="50" width="50"/>
+        <p style="float: left;"> Destroys all elements in the table and replaces them with new ones. </p>
+        <img id="backButton3" src="images/back.jpg" height="60" width="100"
+             style="position:relative; left: 140px;top:0px; ;border-radius: 50%"
+             onclick="start(),clickFunction()"/>
+    </section>
+
+    <section id="upgradeSection" style="display: none">
+        <img id="backButton" src="images/back.jpg" height="60" width="100"
+             style="position:relative; left: 50px;top:700px; ;border-radius: 50%"
+             onclick="viewHome(),clickFunction()"/>
+        <table id="upgradeTable">
+            <tr>
+                <td><span id="woodDiv" class="chance">Wood Drop Chance +0%</span></td>
+                <td><span id="plusWood" onclick="upgrade('wood')" class="plus">+</span></td>
+                <td><span id="woodRequirements" class="upgradeRequirementsClass"></span></td>
+            </tr>
+
+            <tr>
+                <td><span id="stoneDiv" class="chance">Stone Drop Chance +0%</span></td>
+                <td><span id="plusStone" onclick="upgrade('stone')" class="plus">+</span></td>
+                <td><span id="stoneRequirements" class="upgradeRequirementsClass"></span></td>
+            </tr>
+
+            <tr>
+                <td><span id="metalDiv" class="chance">Metal Drop Chance +0%</span></td>
+                <td><span id="plusMetal" onclick="upgrade('metal')" class="plus">+</span></td>
+                <td><span id="metalRequirements" class="upgradeRequirementsClass"></span></td>
+            </tr>
+            <tr>
+                <td><span id="foodDiv" class="chance">Food Drop Chance +0%</span></td>
+                <td><span id="plusFood" onclick="upgrade('food')" class="plus">+</span></td>
+                <td><span id="foodRequirements" class="upgradeRequirementsClass"></span></td>
+            </tr>
+            <tr>
+                <td><span id="waterDiv" class="chance">Water Drop Chance +0%</span></td>
+                <td><span id="plusWater" onclick="upgrade('water')" class="plus">+</span></td>
+                <td><span id="waterRequirements" class="upgradeRequirementsClass"></span></td>
+            </tr>
+            <tr>
+                <td><span id="silverDiv" class="chance">Silver Drop Chance +0%</span></td>
+                <td><span id="plusSilver" onclick="upgrade('silver')" class="plus">+</span></td>
+                <td><span id="silverRequirements" class="upgradeRequirementsClass"></span></td>
+            </tr>
+            <tr>
+                <td><span id="goldDiv" class="chance">Gold Drop Chance +0%</span></td>
+                <td><span id="plusGold" onclick="upgrade('gold')" class="plus">+</span></td>
+                <td><span id="goldRequirements" class="upgradeRequirementsClass"></span></td>
+            </tr>
+
+            <tr>
+                <td><span id="diamondDiv" class="chance">Diamond Drop Chance +0%</span></td>
+                <td><span id="plusDiamond" onclick="upgrade('diamonds')" class="plus">+</span></td>
+                <td><span id="diamondsRequirements" class="upgradeRequirementsClass"></span></td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="shopSection" style="display: none">
+        <img id="backButton2" src="images/back.jpg" height="60" width="100"
+             style="position:relative; left: 50px;top:700px; ;border-radius: 50%"
+             onclick="viewHome(),clickFunction()"/>
+        <table id="shopTable">
+            <tr>
+                <td>Buy 1 Wood</td>
+                <td>1</td>
+                <td class="pic"></td>
+                <td><span onclick="itemPurchesed('Wood')" id="plusShopWood" class="plusShop">+</span></td>
+            </tr>
+
+            <tr>
+                <td>Buy 1 Stone</td>
+                <td>1</td>
+                <td class="pic"></td>
+                <td><span onclick="itemPurchesed('Stone')" id="plusShopStone" class="plusShop">+</span></td>
+            </tr>
+
+            <tr>
+                <td>Buy 1 Metal</td>
+                <td>1</td>
+                <td class="pic"></td>
+                <td><span onclick="itemPurchesed('Metal')" id="plusShopMetal" class="plusShop">+</span></td>
+            </tr>
+
+            <tr>
+                <td>Buy 1 Food</td>
+                <td>2</td>
+                <td class="pic"></td>
+                <td><span onclick="itemPurchesed('Food')" id="plusShopFood" class="plusShop">+</span></td>
+            </tr>
+
+            <tr>
+                <td>Buy 1 Water</td>
+                <td>2</td>
+                <td class="pic"></td>
+                <td><span onclick="itemPurchesed('Water')" id="plusShopWater" class="plusShop">+</span></td>
+            </tr>
+
+            <tr>
+                <td>Buy 1 Silver</td>
+                <td>5</td>
+                <td class="pic"></td>
+                <td><span onclick="itemPurchesed('Silver')" id="plusShopSilver" class="plusShop">+</span></td>
+            </tr>
+
+            <tr>
+                <td>Buy 1 Gold</td>
+                <td>10</td>
+                <td class="pic"></td>
+                <td><span onclick="itemPurchesed('Gold')" id="plusShopGold" class="plusShop">+</span></td>
+            </tr>
+
+            <tr>
+                <td>Buy 1 Diamond</td>
+                <td>15</td>
+                <td class="pic"></td>
+                <td><span onclick="itemPurchesed('Diamond')" id="plusShopDiamond" class="plusShop">+</span></td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="level" style=" position:absolute; display: none;opacity:inherit;filter:inherit;">
+        <table id="mainTable" border="1" style="display: inline"></table>
+        <div class="levelInfoClass"
+             style="border: 3px solid #1A9F9B;border-radius: 100%;box-shadow: 0px 0px 20px 10px black inset;">
+            <div id="levelInfo">Moves:5</div>
+        </div>
+        <div id="comboGold" style="background-color: #EDF668"></div>
+        <div id="comboBlack" style="background-color: black"></div>
+        <div id="specialsDiv"
+             style="text-shadow: -3px 0px black,0px 3px black,3px 0px black,-3px 0px black; position:absolute;font-size:50px;color: #1A9F9B; left: 20px;top: 685px; text-align: center">
+            Specials:0
+        </div>
+        <div id="hero" onmouseover="heroBlink()"><img id="heroImg" src="images/spr1.png" height="200" width="100"
+                                                      style="position:absolute;top: 280px;left: 50px; "/></div>
+        <span onclick="specialConsumed('+3')" class="classSpecials"
+              style="pointer-events: none; opacity: 0.2;position:absolute;top: 590px;left: 110px;border: 4px solid gold;border-radius: 7px"><img
+                src="images/+3.png" height="50" width="50"/></span>
+        <span id="destroyTable" onclick="specialConsumed('destroyTable')" class="classSpecials"
+              style="pointer-events: none; opacity: 0.2;position:absolute;top: 590px;left: 30px;border: 4px solid gold;border-radius: 7px"><img
+                src="images/explosion.jpg" height="50" width="50"/></span>
+    </section>
+
+    <section id="voidPointsSection" style="display: none;">
+        <div id="voidPointsDiv">Void Points:0</div>
+    </section>
+
+    <section id="sectionGoals" style="display: none">
+        <ul type="none" id="goalTable" style="position:relative;list-style:none;left: 780px;top:-20px;width: 30%;">
+            <li id="goals" class="classGoal">Goals:</li>
+            <li>_ <span id="woodGoal" class="classGoal" style="font-size: 30px;margin-bottom: 10px; display: inline">Have 3 Wood
+                </span><span id="woodChecker" class="classChecker" style="display: inline;float: right"></span></li>
+            <li>_ <span id="stoneGoal" class="classGoal" style="font-size: 30px;margin-bottom: 10px; display: inline">Have 3 Stone
+                </span><span id="stoneChecker" class="classChecker" style="display: inline;float: right"></span></li>
+            <li>_ <span id="metalGoal" class="classGoal" style="font-size: 30px;margin-bottom: 10px; display: inline">Have 3 Stone
+                </span><span id="metalChecker" class="classChecker" style="display: inline;float: right"></span></li>
+            <li>_ <span id="foodGoal" class="classGoal" style="font-size: 30px;margin-bottom: 10px; display: inline">Have 3 Stone
+                </span><span id="foodChecker" class="classChecker" style="display: inline;float: right"></span></li>
+            <li>_ <span id="waterGoal" class="classGoal" style="font-size: 30px;margin-bottom: 10px; display: inline">Have 3 Stone
+                </span><span id="waterChecker" class="classChecker" style="display: inline;float: right"></span></li>
+            <li id="silverLi">_<span id="silverGoal" class="classGoal"
+                                     style="font-size: 30px;margin-bottom: 10px; display: inline">Have 3 Stone
+                </span><span id="silverChecker" class="classChecker" style="display: inline;float: right"></span></li>
+            <li id="goldLi">_<span id="goldGoal" class="classGoal"
+                                   style="font-size: 30px;margin-bottom: 10px; display: inline">Have 3 Stone
+                </span><span id="goldChecker" class="classChecker" style="display: inline;float: right"></span></li>
+            <li id="diamondLi">_<span id="diamondsGoal" class="classGoal"
+                                      style="font-size: 30px;margin-bottom: 10px; display: inline">Have 3 Stone
+                </span><span id="diamondsChecker" class="classChecker" style="display: inline;float: right"></span></li>
+        </ul>
+        <div id="resourseMinusDiv" style="display: none"></div>
+    </section>
+
+    <section id="homeSection" style="display: none">
+        <div id="homeSectionHolder"
+             style="position:relative; left:503px;top:100px;border: solid black;width: 160px; ;height:280px;border-radius: 50%">
+            <button id="NewDayButton" class="homeClass"
+                    onclick="viewLevel(),clickFunction(),levelSound('start')"></button>
+            <br>
+            <button id="shop" class="homeClass" onclick="viewShop(),clickFunction()">Shop</button>
+            <br>
+            <button id="upgrade" class="homeClass" onclick="viewUpgrade(),clickFunction()">Upgrades</button>
+            <br>
+            <button id="exitFromHOmeSection" class="homeClass" onclick="exitFunction()">Exit</button>
+        </div>
+    </section>
+
+    <section id="newGameSection">
+        <section id="container">
+            <img id="logo" src="images/logoVoid2.png" height="250px" width="1000px"
+                 style="position:relative;left: 70px;top: 520px; "/>
+            <div id="project"
+                 style="position:relative;top: 250px;left: 20px ;width: 250px;height: 50px;transform: rotate(315deg);display: none">
+                <img src="images/PROJECT.png" width="250px;" height="50px"
+                     style="position:absolute;left: -45px;top: -5px;">
+            </div>
+        </section>
+        <div id="newGameHolder"
+             style="position: relative;left:503px;top: -98px;border: solid black;width: 160px; ;height:280px;border-radius: 50%">
+            <button id="newGameButton" class="newGameClass"
+                    onclick="viewHome(),clickFunction(),homeSoundFunction('start')">New Game
+            </button>
+            <br>
+            <button id="instructions" class="newGameClass" onclick="clickFunction(),viewInstructions()">Instructions
+            </button>
+            <br>
+            <button id="exitFromNewGameSection" class="newGameClass" onclick="clickFunction(),exitFunction()">Exit
+            </button>
+        </div>
+    </section>
+
+    <section id="getReady">
+        <h2 id="day"></h2>
+    </section>
+
+    <section id="endOfDay" style="display: none">
+        <div id="diveEndOfDay" class="ready">End Of The Day...</div>
+    </section>
+
+    <section id="bonus" style="display: none">
+        <div id="chestsDiv">
+            <span id="chestOne" class="chests"><img
+                    onclick="animationn('chestOne'),clickFunction()"
+                    src="images/chest1.png"
+                    height="139"
+                    width="100"/></span>
+            <span id="chestTwo" class="chests"><img
+                    onclick="animationn('chestTwo'),clickFunction()"
+                    src="images/chest1.png"
+                    height="139"
+                    width="100"/></span>
+            <span id="chestThree" class="chests"><img
+                    onclick="animationn('chestThree'),clickFunction()"
+                    src="images/chest1.png" height="139"
+                    width="100"/></span>
+            <div id="reward1" onmouseover="hoverRewardOne()" style="visibility: hidden"></div>
+            <div id="reward2" onmouseover="hoverRewardTwo()" style="visibility: hidden"></div>
+            <div id="reward3" onmouseover="hoverRewardThree()" style="visibility: hidden"></div>
+        </div>
+    </section>
+
+    <section id="deathSection" style="display: none">
+        <div id="failDiv">FAILURE</div>
+        <div style="text-align: center;display: block">
+            <button id="btnTryAgain" onclick="tryAgain(),clickFunction()">Try Again</button>
+            <button id="btnExit" onclick="exitFunction(),clickFunction()">Exit</button>
+        </div>
+    </section>
+
+</div>
+<audio id="clickAnywhere">
+    <source src="sound/click.mp3" loop="loop">
+</audio>
+
+<audio id="levelSound">
+    <source src="sound/levelTheme.mp3" loop="loop">
+</audio>
+
+<audio id="homeSound">
+    <source src="sound/backGroundTheme1.mp3" loop="loop">
+</audio>
+
+<audio id="heroHit">
+    <source src="sound/heroHit.mp3">
+</audio>
+
+<audio id="resourceTaken">
+    <source src="sound/resourseTakenAtEndOfLevel.mp3">
+</audio>
+
+<audio id="match">
+    <source src="sound/match.mp3">
+</audio>
+
+<audio id="comboBar">
+    <source src="sound/comboBar.mp3">
+</audio>
+
+<audio id="comboBarFull">
+    <source src="sound/comboBarFull.mp3">
+</audio>
+
+<audio id="explosionSound">
+    <source src="sound/specialExplosion.mp3">
+</audio>
+
+<audio id="upgradeResource">
+    <source src="sound/upgrade.mp3">
+</audio>
+
+<audio id="movesPlusOne">
+    <source src="sound/11.mp3">
+</audio>
+
+<audio id="bomb">
+    <source src="sound/smallBomb.mp3">
+</audio>
+
+<audio id="chestOpen">
+    <source src="sound/chestOpenSound.mp3">
+</audio>
+
+<audio id="lose">
+    <source src="sound/loseScream.mp3">
+</audio>
+
+<audio id="celebrate">
+    <source src="sound/celebrate.mp3">
+</audio>
+
+<script src="void.js"></script>
+</body>
+</html>
