@@ -30,7 +30,7 @@ let water = 2;
 let silver = 0;
 let gold = 0;
 let diamonds = 0;
-let day = 1;
+let day = 1 ;
 let matchArrHorizontal = [];
 let matchArrVertical = [];
 let woodLevel = 0;
@@ -367,7 +367,7 @@ function viewUpgrade() {
             $("#diamondsRequirements").text("-not available")
         }
         $("#upgradeTable  tr  td").css("background", "transparent");
-        $("#voidPointsDiv").css("top", "70px");
+        $("#voidPointsDiv").css("top", "88px");
         $("#upgradeSection").fadeIn(2000);
         $("#voidPointsSection").fadeIn(2000);
     })
@@ -408,7 +408,7 @@ function viewShop() {
         $("#endOfDay").hide();
         $("#sectionGoals").hide();
         $(".pic").html('<img src="images/void.png" style="  height:30px ;width:30px"/>');
-        $("#voidPointsDiv").css("top", "126px").text("Void Points:" + voidPoints);
+        $("#voidPointsDiv").css("top", "96px").text("Void Points:" + voidPoints);
         $("#shopSection").fadeIn(2000)
         $("#voidPointsSection").fadeIn(2000)
 
@@ -436,7 +436,7 @@ function viewHome() {
         $("#diamonds").text("Diamonds:" + diamonds);
         $("#voidPointsDiv").text("Void Points:" + voidPoints).show().css("top", "670px");
         $("#voidPointsSection").fadeIn(2000);
-        $("#bonus").fadeOut();
+        $("#bonus").hide();
         $("#getReady").hide();
         $("#newGameSection").hide();
         $("#level").hide();
@@ -880,7 +880,7 @@ function areAllRewardsTaken() {
     if (rewardsTaken === 3) {
         rewardsTaken = 0;
         setTimeout(function () {
-            viewHome();
+            // viewHome();
             let a = new Image();
             a.src = "images/chest1.png";
             let b = new Image();
@@ -929,6 +929,8 @@ function areAllRewardsTaken() {
                 "width": "40px",
                 "height": "40px",
             })
+            $('#bonus').hide()
+            viewHome();
         }, 1000)
     }
 }
@@ -1127,7 +1129,7 @@ function checkForMatches() {
                     if (conditionDayPassed === true) {
                         $("#goalTable").css({
                             left: "780px",
-                            top: "91px"
+                            top: "64px"
                         });
                         dayPassed();
                     }

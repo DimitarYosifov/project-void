@@ -315,8 +315,11 @@ td > .plus {
 
     border-radius: 100px;
     border: 2px solid gold;
-    width: 30px;
-    height: 30px;
+
+    /*30px originally*/
+    width: 70px;
+    height: 70px;
+    /*30px originally*/
 }
 
 #wrapper {
@@ -455,6 +458,7 @@ body {
     background: url("images/body-background.png");
     background-repeat: no-repeat;
     background-size: cover;
+    /*transform: scale(0.8);!*     <---FOR KONGREGATE.COM ONLY  *!*/
 }
 
 #logo {
@@ -527,9 +531,18 @@ body {
 #instructionsSection {
     color: white;
     font-family: 'Exo 2', sans-serif;
-    font-size: 30px;
+    font-size: 29px;
 }
 
 #thankyouu:hover {
     cursor: default;
+}
+
+#preload{
+    position: absolute;
+    overflow: hidden;
+    left: -9999px;
+    top: -9999px;
+    height: 1px;
+    width: 1px;
 }
